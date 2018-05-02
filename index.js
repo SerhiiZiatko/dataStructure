@@ -725,8 +725,48 @@ function findUniqueTags(ar1, ar2) {
 
 console.log(findUniqueTags(arr1, arr2))   // [ { id: 0, name: ‘cillum’}, ……]
 
+// 4.3  создать функцию, которая будет принимать любое количество массивов и будет возвращать совершенно новый массив который будет включать полную копию всех входящих данных(все соответствующие массивы и объекты будут иметь разные ссылки). для решения использовать массивы arr1 и arr2.
+//
+// copy(arr1, arr2) // newArr1 !== arr1  → true;  newArr1.tags !== arr1.tags → true
 
 
+function copy() {
+    let r = []
+    let r1 = []
+    for (let i = 0; i < arguments.length; i++) {
+        r.push(...arguments[i])
+    }
+    console.log(r)
+    for (let i = 0; i < r.length; i++) {
+        const newObj = JSON.parse(JSON.stringify(r[i]))
+        console.log(newObj, r[i])
+        console.log(newObj.tags === r[i].tags)
+        console.log(newObj.tags == r[i].tags)
+        r1.push(newObj)
+    }
+    return r1
+}
+ copy(arr1, arr2)
+
+
+
+function makeW1(fontWidth, height) {
+    let arr = [];
+    for (let i = 0; i < height; i++) {
+        arr[i] = (' '.repeat(i) + '*'.repeat(fontWidth) + ' '.repeat(height-1-i));
+    }
+    for (let i = 0, j = height-1; i < height, j >= 0; i++, j--) {
+        arr[i] = arr[i] + arr[j];
+    }
+    let len = arr[0].length;
+    for (let i = 0; i < height; i++) {
+        arr[i] = arr[i].slice(0, len);
+    }
+    for (let i = 0; i < height; i++) {
+        arr[i] = arr[i].repeat(2);
+    }
+    return arr;
+}
 
 
 
