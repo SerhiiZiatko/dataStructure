@@ -64,5 +64,5 @@ function isDate(date) {
 //--------------------------------------------------------------------------------------------------------------------//
 
 function isPhoneNumber(number) {
-    return /^\+\d{12}$/.test(number);
+    return /^(\+380)\d{9}$/.test(number);
 }
