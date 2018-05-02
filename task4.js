@@ -576,14 +576,10 @@ findUniqueTags(arr1, arr2)   // [ { id: 0, name: ‘cillum’}, ……]
 
 function findUniqueTags(arr1, arr2){
     const set = new Set(arr1.concat(arr2).reduce((prev, item, i) => {
-        return prev.concat(item.tags)
+        return prev.concat(item.tags);
     }, []));
-    let result = [];
-    let i = 1;
-    set.forEach((item) => {
-        result.push({id: i++, name: item});
-    });
-    return result;
+    let array = [...set];
+    return array.map((item, i) => ({id: i, name: item}));
 }
 
 /*
