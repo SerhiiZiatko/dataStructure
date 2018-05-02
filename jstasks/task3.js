@@ -7,5 +7,30 @@ function createPatternArray(string) {
     return res;
 }
 
-let tmp = createPatternArray("red 1 yellow 2 black 3 white 4");
-console.log(tmp);
+//--------------------------------------------------------------------------------------------------------------------//
+
+function findArray(arr1, arr2) {
+    if(arr1.length == 0) {
+        return [];
+    } else {
+        let res = [];
+        for (i of arr2) {
+            res.push(arr1[i]);
+        }
+        return res;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+function avgLengthArray(arr) {
+    let lengths = [];
+    for (let i = 0; i < arr.length; i++) {
+        lengths.push(arr[i].length);
+    }
+    let avg = Math.round((lengths.reduce((x, y) => x + y, 0)/lengths.length));
+    for (let j = 0; j < arr.length; j++) {
+        arr[j] = arr[j][0].repeat(avg);
+    }
+    return arr;
+}
