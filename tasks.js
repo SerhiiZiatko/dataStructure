@@ -39,12 +39,12 @@
  
   // функцию isUrl для проверки url 
   const isUrl = (str) => {
-    var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
-      '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
-      '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
-      '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
-      '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
-      '(\#[-a-z\d_]*)?$','i'); // fragment locater
+    var pattern = new RegExp('^(https?:\/\/)?'+
+      '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+
+      '((\d{1,3}\.){3}\d{1,3}))'+
+      '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+
+      '(\?[;&a-z\d%_.~+=-]*)?'+
+      '(\#[-a-z\d_]*)?$','i');
     if(!pattern.test(str)) {
       console.log("Please enter a valid URL+.");
       return false;
@@ -76,7 +76,6 @@
   // console.log(isPhoneNumber('0000989817689')); //false
 
 
-// Задача 2:
 // вывести в консоль букву W в виде звездочек c задаваемыми параметрами ширины шрифта - fontWidth (количество звездочек) и высоты - height.
   // * - добавить третий параметр количество символов V в ряду - length.
 // 
@@ -98,7 +97,35 @@
       //  ******        ******
         // ****          ****
 // 
+const wordW = (fontWidth, height, length) => {
+  const star = '***';
 
+  const space = (num) => {
+    let temp = '';
+    for (let i = 0; i < num; i++) {
+      temp = temp + ' ';
+    }
+    return temp;
+  }
+
+  let arr = [];
+  let sp = 12;
+    for(let i = 0; i < height; i++) {
+      arr.push(space(i) + star + space(sp) + star + space(i));
+      sp = sp - 2;
+    }
+    let end = arr.map((index,i) => {
+      let tmp = ''
+      for(let i = 0; i < length; i++) {
+        tmp = tmp + index;
+      }
+      return tmp;
+    }).join('\n');
+    
+  return end; 
+}
+
+console.log(wordW(3, 7, 6));
 
 
 
@@ -712,11 +739,6 @@ const arr2 = [
     "favoriteFruit": "banana"
   }
 ]
-
-
-
-  // есть 2 массива данных arr1 и arr2 https://jsfiddle.net/sbm0g8nt/ необходимо провести манипуляции с данными
-
   // 4.1  создать новый массив данных из объектов в массивах arr1 и arr2 в которых:
     // balance > 2000
     // age < 30
@@ -724,9 +746,6 @@ const arr2 = [
     // и которые имеют теги 'velit' и 'anim'
 
 // filterArrays(arr1,arr2)  // [ {...}, {...}, {...} ]
-
-  
-
 
   const filterArrays = function(arr1, arr2) {
     const newArray = [];
@@ -753,8 +772,8 @@ const arr2 = [
 
     return newArray;
   }
-  
 // console.log(filterArrays(arr1, arr2));
+
   // 4.2  создать новый массив уникальных тегов со всех тегов из массивов arr1 и arr2 и добавить каждому тегу уникальный id. 
 // 
 // findUniqueTags(arr1, arr2)   // [ { id: 0, name: ‘cillum’}, ……]
@@ -795,12 +814,11 @@ const findUniqueTags = function(arr1, arr2) {
     isn++;
   }
   
-  // newArray.sort();
   return end;
   
 }
 
-console.log(findUniqueTags(arr1, arr2));
+// console.log(findUniqueTags(arr1, arr2));
 
 
   // 4.3  создать функцию, которая будет принимать любое количество массивов и будет возвращать совершенно новый массив который будет включать полную копию всех входящих данных
@@ -818,9 +836,3 @@ const copy = function() {
   }
   return JSON.parse(JSON.stringify([(endArr.reduce((x, y) => x + y))]));
 };
-
-// console.log(copy(arr1,arr2))
-
-// function copys() {
-//  
-// }
