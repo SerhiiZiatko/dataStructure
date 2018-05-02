@@ -12,34 +12,22 @@ const filterTags = ( arr1,arr2 ) => {
         } )
     }
     getAllTags();
-    //const filterArr = []
-
-    const getFilteredTag = (ind,allArr) => {
-        const checkedElem = allArr[ind];
-        const filterArr = [];
-            //console.log(ind)
-            //console.log(allTags.length)
+    const getFilteredTag = (allArr,filteredArr) => {
+        const checkedElem = allArr[0];
+        const filt = filteredArr
         if(allArr.length === 0) {
-            return;
+            return filt;
         } else {
-            if(filterArr.indexOf(checkedElem) !== -1 ){
+            if(filt.indexOf(checkedElem) !== -1 ){
                 allArr = allArr.filter( item => item !== checkedElem )
-                console.log(allArr.length)
             } else{
-                //console.log(checkedElem)
-                console.log(allArr.length)
-                filterArr.push(checkedElem)
+                filt.push(checkedElem)
                 allArr = allArr.filter( item => item !== checkedElem )
             }
-            //console.log(ind)
-            return getFilteredTag(ind + 1,allArr);
+            return getFilteredTag(allArr,filt);
         }
-        
-         
     } 
-    console.log(allTags.length);
-    getFilteredTag(0,allTags);
-    //console.log(allTags);
+    const result = getFilteredTag(allTags,[]);
+    return result; 
 }
-
-filterTags(arr1,arr2);
+console.log(filterTags(arr1,arr2));
