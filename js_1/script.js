@@ -7,7 +7,8 @@ function awesomeNumbers (strArr){
     for (let j = 0; j < lenghts.length; j++) {
         sum += lenghts[j];
     }
-    let average = sum/lenghts.length;
+    let average = Math.round(sum/lenghts.length);
+    
     for(let i = 0; i < strArr.length; i++) {
         let char = strArr[i][0];
         if(strArr[i].length < average) {
@@ -35,7 +36,7 @@ function getIndexes(valArr, indexArr) {
     }
     alert(res);
 }
-getIndexes([4,5,2,4,6,8,5,3,2,4,6], [7,3,19]); */
+getIndexes([4,5,2,4,6,8,5,3,2,4,6], [7,3,19]); 
 
 function strToObjArr (string) {
     let toArr = string.split(' ');
@@ -99,3 +100,9 @@ function round2(number) {
     }
     alert(res);
 } 
+
+function isMail(str) {
+    let regexp = /^\w{3,}\@\w{3,}\.\w{3,}$/;
+    alert(regexp.test(str));
+}
+isMail('qwerty@gmail.com');
