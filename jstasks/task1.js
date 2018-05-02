@@ -38,6 +38,10 @@ function round(num) {
     tmp[1] = tmp[1].join('');
     return tmp.join('.');
 }
+//Else solution:
+//function round(num) {
+//    return parseFloat(num.toFixed(8));
+//}
 
 //--------------------------------------------------------------------------------------------------------------------//
 
