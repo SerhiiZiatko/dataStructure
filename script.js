@@ -1,4 +1,4 @@
-console.log('First ex');
+console.log('First ex------------------------------');
 
 // First ex
 // 1
@@ -35,8 +35,8 @@ function round(numb) {
 
 // function round(numb) {
 //     let n = 8;
-//     let numb_mas = numb.toFixed(n).toString().split('.');
-//     let numb_frac = numb_mas[1];
+//     let numb_arr = numb.toFixed(n).toString().split('.');
+//     let numb_frac = numb_arr[1];
 //
 //     for (let i = 0; i < numb_frac.length; i++) {
 //         if ( numb_frac[i] !== 0 ) {
@@ -56,10 +56,10 @@ console.log(round(0.1 * 0.2)); //выведет 0.02 а не '0.02000000'
 // can be done with regular expression
 function isEmail(mail) {
     let mail_valid = true;
-    let mail_mas = mail.split('@');
-    let mail_main_dom = mail_mas[0] || 0;
-    let mail_mid_dom = mail_mas[1].split('.')[0] || 0;
-    let mail_up_dom = mail_mas[1].split('.')[1] || 0;
+    let mail_arr = mail.split('@');
+    let mail_main_dom = mail_arr[0] || 0;
+    let mail_mid_dom = mail_arr[1].split('.')[0] || 0;
+    let mail_up_dom = mail_arr[1].split('.')[1] || 0;
 
     if ( !(mail_main_dom.length > 2 && mail_mid_dom.length > 3 && mail_up_dom.length > 2) )
         mail_valid = false;
@@ -72,15 +72,17 @@ console.log(isEmail('h@g.com')); // false
 console.log(isEmail('html@gmail')); // false
 
 function isUrl(url) {
-    let status = true;
-    let url_mas = url.split('.');
-
-    if (url_mas.length < 2) {
-        status = false;
-    }
-
-    return status;
+    return (url.split('.').length < 2) ;
 }
+
+// function isUrl(url) {
+//     let status = true;
+//     let url_arr = url.split('.');
+//
+//     if (url_arr.length < 2) status = false;
+//
+//     return status;
+// }
 
 console.log(isUrl('http://html.net')); // true
 console.log(isUrl('html.net')); // true
@@ -109,9 +111,9 @@ function isPhoneNumber(number) {
     let is_valid = true;
     let counry_code = number_clear.slice(0, 4);
     let operator_code = number_clear.slice(4, 6);
-    let valid_operator = operator_code === 50 || operator_code === 98;
+    let valid_operator = +operator_code === 50 || +operator_code === 98;
 
-    if ( !(valid_operator && counry_code === '+380' && number.length !== 13)) {
+    if ( !(valid_operator && counry_code === '+380' && number_clear.length == 13)) {
         is_valid = false;
     }
 
@@ -122,8 +124,9 @@ console.log(isPhoneNumber('+380989817689')); // true
 console.log(isPhoneNumber('0000989817689')); // false
 console.log(isPhoneNumber('+38-098-981-76-89')); // true
 console.log(isPhoneNumber('000-098-981-76-89')); // false
+console.log(isPhoneNumber('000-098-981-76-')); // false
 
-console.log('Second ex');
+console.log('Second ex--------------------------');
 
 // second ex
 writew();
@@ -163,8 +166,7 @@ function writew() {
     console.log(final_row);
 }
 
-console.log('Third ex');
-
+console.log('Third ex------------------------');
 //third ex
 //3.1
 console.log(createPatternArray("red 1 yellow 2 black 3 white 4")) ;
