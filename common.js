@@ -794,26 +794,46 @@ function copy (...arg){
 }
 // copy(arr1, arr2)
 //
-// arr1[0].age = 15;
-// console.log(arr1[0]);
+arr1[0].age = 15;
+console.log(arr1[0]);
 
 
 // TASK 2
-// function printW( fontWeight, height) {
-//     let stars = '',
-//         w = '';
-//     for (let i = 0; i < fontWeight; i++) {
-//         stars += '*';
-//     }
-//
-//
-//     for(let i = 0; i < height; i ++){
-//         w += '/n '
-//         w += 'text'
-//
-//
-//     }
-//     console.log(w)
-//
-// }
-// printW( 3, 7)
+function printW( fontWeight, height, squeeze = false) {
+    let stars = [],
+        gap= '         '. split('');
+
+    for (let i = 0; i < fontWeight; i++) {
+        stars.push('*') ;
+    }
+
+    let width = fontWeight + 6;
+    if (squeeze && (height == 8)){
+        width++;
+    }
+    let before = 0,
+        after = width - before - fontWeight;
+
+
+    for(let j = 0; j < height; j++){
+
+        let beforeGap = gap.slice(0, before),
+            afterGap = gap.slice(0, after),
+            part = beforeGap.concat(stars).concat(afterGap);
+        before++;
+        after--;
+
+        if(!squeeze){
+            let resStr = part.slice(0, width).join(''),
+                resStrRevers = part.slice(0, width).reverse().join('');
+            console.log(resStr + resStrRevers + resStr + resStrRevers);
+        }else{
+            let resStr = part.join(''),
+                resStrRevers = part.reverse().join('');
+
+            console.log(resStr.slice(0, width-1) + resStrRevers.slice(1, width-1) + resStr.slice(1, width-1) + resStrRevers.slice(1));
+        }
+    }
+
+}
+printW(3, 8, false)
