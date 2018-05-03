@@ -1,45 +1,59 @@
 console.log('First ex');
 
 // First ex
+// 1
 function reverse(str) {
     return str.split('').reverse().join('');
 }
 
+// 2
 function ucFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// 3
 function ucWords(str) {
-    let mas = str.split(' ');
-
-    for (let i = 0; i < mas.length; i++) {
-        mas[i] = mas[i].charAt(0).toUpperCase() + mas[i].slice(1);
-    }
-
-    return mas.join(' ');
+    let arr = str.split(' ');
+    return arr.map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
 }
 
+// function ucWords(str) {
+//     let arr = str.split(' ');
+//
+//     for (let i = 0; i < arr.length; i++) {
+//         arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+//     }
+//
+//     return arr.join(' ');
+// }
+
+
+// 4
 function round(numb) {
-    let n = 8;
-    let numb_mas = numb.toFixed(n).toString().split('.');
-    let numb_frac = numb_mas[1];
-
-    for (let i = 0; i < numb_frac.length; i++) {
-        if ( numb_frac[i] !== 0 ) {
-            n = ++i;
-        }
-    }
-
-    return numb.toFixed(n)
+    return +numb.toFixed(8);
 }
+
+// function round(numb) {
+//     let n = 8;
+//     let numb_mas = numb.toFixed(n).toString().split('.');
+//     let numb_frac = numb_mas[1];
+//
+//     for (let i = 0; i < numb_frac.length; i++) {
+//         if ( numb_frac[i] !== 0 ) {
+//             n = ++i;
+//         }
+//     }
+//
+//     return numb.toFixed(n)
+// }
 
 console.log(reverse('abcde')); //выведет 'edcba'
 console.log(ucFirst('abcde')); //выведет 'Abcde'
 console.log(ucWords('abcde abcde abcde')); //выведет 'Abcde Abcde Abcde'
 console.log(round(3.141592653589793)); //выведет 3.14159265
 console.log(round(0.1 * 0.2)); //выведет 0.02 а не '0.02000000'
-console.log(round(0.10200)); //выведет 0.102 а не '0.10200000'
 
+// can be done with regular expression
 function isEmail(mail) {
     let mail_valid = true;
     let mail_mas = mail.split('@');
@@ -97,7 +111,7 @@ function isPhoneNumber(number) {
     let operator_code = number_clear.slice(4, 6);
     let valid_operator = operator_code === 50 || operator_code === 98;
 
-    if ( !(valid_operator && counry_code === '+380')) {
+    if ( !(valid_operator && counry_code === '+380' && number.length !== 13)) {
         is_valid = false;
     }
 
