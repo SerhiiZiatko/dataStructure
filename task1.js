@@ -44,8 +44,13 @@ function isUrl(string) {
 }
 
 function isDate(string) {
-    return /^\d{2}[./-]\d{2}[./-]\d{4}/.test(string);
+    let [day, mon, year] = string.split(/[./-]/);
+    if ( day > 31 || mon > 12){
+        return false
+    }
+    return /^[0-9]{1,2}[./-][0-9]{1,2}[./-][0-9]{2,4}/.test(string);
 }
+
 
 function isPhoneNumber(string) {
     return /^\+*(\d{3}){0,1}(\d{2})\d{7}$/.test(string)
